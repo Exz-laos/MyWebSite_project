@@ -20,6 +20,7 @@ function Index(){
         fetchDataFromLocal();
     },[]);
 
+
     const fetchData = async () => {
         try{
             const res = await axios.get(config.apiPath + '/product/list');
@@ -34,6 +35,7 @@ function Index(){
             })
         }
     }
+
 
     const fetchDataFromLocal = () => {
         const itemInCarts = JSON.parse(localStorage.getItem('carts'));
@@ -59,6 +61,7 @@ function Index(){
                 alt="" 
                 style={{ width: '100%', height: '250px', objectFit: 'cover' }} // กำหนดขนาดและอัตราส่วนภาพให้เหมือนกันทุกการ์ด
             />
+            
             );
         }
     }
@@ -195,20 +198,23 @@ function Index(){
                 {products.length > 0 ? products.map(item =>
                     <div className="col-3 mt-3" key={item.id}>
                         <div className="card" style={{ border: '1px solid #ccc', padding: '15px' }}> 
-                     
-
-                        
                             {showImage(item)}
-                            <div className="card-body" >
+                            <div className="card-body">
                                 <div>{item.name}</div>
                                 <div>{item.price.toLocaleString('th-Th')}</div>
-                                <div className="text-center">
-                                    <button className="btn btn-primary" onClick={e=> addToCart(item)}>
-                                        <i className="fa fa-shopping-cart mr-2 me-2"></i>
+                                <div className="text-center d-flex justify-content-center mt-3">
+                                    <button className="btn btn-primary me-2" onClick={e => addToCart(item)}>
+                                        <i className="fa fa-shopping-cart me-2"></i>
                                         Add to Cart
+                                    </button>
+                                    <button className="btn btn-outline-success">
+                                        <i className="fa fa-eye me-2"></i> 
+                                       
                                     </button>
                                 </div>
                             </div>
+
+                      
                         </div>
                     </div>
 

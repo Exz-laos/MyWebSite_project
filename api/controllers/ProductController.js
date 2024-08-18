@@ -58,6 +58,8 @@ app.delete('/remove/:id',async(req,res)=>{
         res.status(500).send({error: e.message});
     }
 })
+
+
 app.put('/update', async (req, res) => {
     try{
         const fs = require('fs');
@@ -85,6 +87,8 @@ app.put('/update', async (req, res) => {
         res.status(500).send({error: e.message});
     }
 })
+
+
 app.post('/upload',async(req,res)=>{
     try{
         if (req.files != undefined){
